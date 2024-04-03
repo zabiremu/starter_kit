@@ -5,6 +5,5 @@ use Illuminate\Support\Facades\Route;
 
 
 
-// Authenticaion Routes
+// Authentication Routes
 Auth::routes();
-

@@ -7,6 +7,7 @@ use App\Http\Controllers\Web\Backend\Settings\ProfileController;
 use App\Http\Controllers\Web\Backend\Settings\PasswordController;
 use App\Http\Controllers\Web\Backend\Dashboard\DashboardController;
 use App\Http\Controllers\Web\Backend\Settings\GeneralInformationController;
+use App\Http\Controllers\Web\Backend\User\UserController;
 
 Route::middleware('auth')->group(function () {
     // Dashboard Route
@@ -42,5 +43,11 @@ Route::middleware('auth')->group(function () {
     Route::controller(GeneralInformationController::class)->prefix('general-information')->name('admin.general-information.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/update', 'update')->name('update');
+    });
+
+    //Users Route
+    Route::controller(UserController::class)->prefix('users')->name('users.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/create', 'create')->name('create');
     });
 });
