@@ -11,11 +11,16 @@ class UserController extends Controller
 {
     public function index()
     {
+        // Render the user index page view located at 'backend.layout.user.index'.
+        return view('backend.layout.user.index');
+    }
+    public function create()
+    {
         // Render the user create page view located at 'backend.layout.user.create'.
-        return view('backend.layout.settings.user.create');
+        return view('backend.layout.user.create');
     }
 
-    public function create(StoreCreateUserRequest $request)
+    public function store(StoreCreateUserRequest $request)
     {
         // Check if an ID is provided in the request
         if ($request->id) {

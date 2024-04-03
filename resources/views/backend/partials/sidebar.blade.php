@@ -39,6 +39,26 @@
             </a>
         </li>
 
+        {{-- users menu start --}}
+         <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#users" aria-expanded="false" aria-controls="users">
+                <span class="menu-icon">
+                    <i class="mdi mdi-account-circle text-success"></i>
+                </span>
+                <span class="menu-title">User</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="users">
+
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('users.create') }}">Create User</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('users.index') }}">User List</a></li>
+                </ul>
+            </div>
+        </li>
+        {{-- users menu End --}}
+
+
         {{-- setting menu start --}}
         <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#settings" aria-expanded="false" aria-controls="settings">

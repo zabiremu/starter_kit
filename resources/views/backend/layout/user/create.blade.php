@@ -8,8 +8,8 @@
         <div class="col-md-10 d-flex justify-content-center grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <!-- Form for company information -->
-                    <h4 class="card-title">Company Information</h4>
+                    <!-- Form for create user -->
+                    <h4 class="card-title">Create User</h4>
                     <form class="forms-sample" action="{{ route('company-information.update') }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
