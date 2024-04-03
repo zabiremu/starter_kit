@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <!-- Form for create user -->
                     <h4 class="card-title">Create User</h4>
-                    <form class="forms-sample" action="{{ route('company-information.update') }}" method="POST"
+                    <form class="forms-sample" action="{{ route('users.store') }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
                         <!-- Input field for user name -->
