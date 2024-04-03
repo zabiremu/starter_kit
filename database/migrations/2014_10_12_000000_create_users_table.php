@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone')->nullable();
             $table->text('image')->nullable();
-            $table->enum('status',[0,1])->default(1)->nullable()->comment('0 means pending and 1 means active');
+            $table->enum('status', [0, 1])->default(1)->nullable()->comment('0 means pending and 1 means active');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->softDeletes();

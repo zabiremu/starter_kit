@@ -14,7 +14,7 @@ class CompanyController extends Controller
     {
         // Retrieve the first company information record
         $companyInformation = CompanyInformation::first();
-
+        // Render the company-information settings index page view located at 'backend.layout.settings.companyInformation.index'.
         return view('backend.layout.settings.companyInformation.index', compact('companyInformation'));
     }
 
@@ -28,7 +28,19 @@ class CompanyController extends Controller
             // Create new company information
             $companyInformation = new CompanyInformation();
         }
+        // Save the favicon image provided in the request.
+        // Parameters:
+        // 1. $request->favicon: The uploaded favicon image file.
+        // 2. 'companyInfo': The directory in which the image will be saved.
+        // 3. 'company-favicon': The filename to be used for the saved favicon image.
+        // 4. $companyInformation->favicon: The existing favicon filename (if any) to be replaced.
         $image_favicon = saveImage($request->favicon, 'companyInfo', 'company-favicon', $companyInformation->favicon);
+        // Save the logo image provided in the request.
+        // Parameters:
+        // 1. $request->logo: The uploaded logo image file.
+        // 2. 'companyInfo': The directory in which the image will be saved.
+        // 3. 'company-logo': The filename to be used for the saved logo image.
+        // 4. $companyInformation->logo: The existing logo filename (if any) to be replaced.
         $image_logo = saveImage($request->logo, 'companyInfo', 'company-logo', $companyInformation->logo);
 
         // Assign values from the request to the company information object

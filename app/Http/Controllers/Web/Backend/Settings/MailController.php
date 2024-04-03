@@ -12,6 +12,7 @@ class MailController extends Controller
 {
     public function index()
     {
+        // Render the mail settings index page view located at 'backend.layout.settings.mailSettings.index'.
         return view('backend.layout.settings.mailSettings.index');
     }
 

@@ -82,11 +82,9 @@
             <div class="collapse" id="settings">
 
                 <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.profile.index') }}">Admin rofile</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('company-information.index') }}">Company
                             Information</a></li>
-                </ul>
-
-                <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ route('mail-settings.index') }}">Mail
                             Settings</a></li>
                 </ul>
