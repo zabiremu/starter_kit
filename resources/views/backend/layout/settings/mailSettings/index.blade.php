@@ -11,7 +11,7 @@ Mail Setting
                     <div class="card-body">
                         <!-- Form for mail settings -->
                         <h4 class="card-title"> Mail Settings</h4>
-                        <form class="forms-sample" action="{{ route('mailsettings.update')}}"
+                        <form class="forms-sample" action="{{ route('mail-settings.update')}}"
                             method="POST" enctype="multipart/form-data">
                             @csrf
                             {{-- We are passing our id to the request  --}}
@@ -23,7 +23,7 @@ Mail Setting
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control @error('mail_transport') is-invalid @enderror"
                                         id="mail_transport" placeholder="Mail Mailer" name="mail_transport"
-                                        value="{{ isset($mail_settings->mail_transport) ? $mail_settings->mail_transport : '' }}">
+                                        value="{{ old('mail_transport', env('MAIL_MAILER')) }}">
                                     @error('mail_transport')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -38,7 +38,7 @@ Mail Setting
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control @error('mail_host') is-invalid @enderror"
                                         id="mail_host" placeholder="Mail Host" name="mail_host"
-                                        value="{{ isset($mail_settings->mail_host) ? $mail_settings->mail_host : '' }}">
+                                        value="{{ old('mail_host', env('MAIL_HOST')) }}">
                                     @error('mail_host')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -53,7 +53,7 @@ Mail Setting
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control @error('mail_port') is-invalid @enderror"
                                         id="mail_port" placeholder="Mail Port" name="mail_port"
-                                        value="{{ isset($mail_settings->mail_port) ? $mail_settings->mail_port : '' }}">
+                                        value="{{ old('mail_port', env('MAIL_PORT')) }}">
                                     @error('mail_port')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -68,7 +68,7 @@ Mail Setting
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control @error('mail_username') is-invalid @enderror"
                                         id="mail_username" placeholder="Mail Username" name="mail_username"
-                                        value="{{ isset($mail_settings->mail_username) ? $mail_settings->mail_username : '' }}">
+                                        value="{{ old('mail_username', env('MAIL_USERNAME')) }}">
                                     @error('mail_username')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -83,7 +83,7 @@ Mail Setting
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control @error('mail_password') is-invalid @enderror"
                                         id="mail_password" placeholder="Mail Password" name="mail_password"
-                                        value="{{ isset($mail_settings->mail_password) ? $mail_settings->mail_password : '' }}">
+                                        value="">
                                     @error('mail_password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -99,7 +99,7 @@ Mail Setting
                                     <input type="text"
                                         class="form-control @error('mail_encryption') is-invalid @enderror"
                                         id="mail_encryption" placeholder="Mail Encryption" name="mail_encryption"
-                                        value="{{ isset($mail_settings->mail_encryption) ? $mail_settings->mail_encryption : '' }}">
+                                        value="{{ old('mail_encryption', env('MAIL_ENCRYPTION')) }}">
                                     @error('mail_encryption')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -114,7 +114,7 @@ Mail Setting
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control @error('mail_from') is-invalid @enderror"
                                         id="mail_from" placeholder="Mail From" name="mail_from"
-                                        value="{{ isset($mail_settings->mail_from) ? $mail_settings->mail_from : '' }}">
+                                        value="{{ old('mail_from', env('MAIL_FROM_ADDRESS')) }}">
                                     @error('mail_from')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

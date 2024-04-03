@@ -21,7 +21,7 @@ function timestamp()
  * @param string $disk default = public
  * @return string $new_path
  */
-function saveImage($image, string $dir, ?string $prefix = '',string $oldImage=null ,string $disk = 'public')
+function saveImage($image, string $dir, ?string $prefix = '', string $oldImage = null, string $disk = 'public')
 {
     if ($image) {
         if ($prefix === '' || $prefix === null) {
@@ -38,18 +38,15 @@ function saveImage($image, string $dir, ?string $prefix = '',string $oldImage=nu
 
 function deleteImage($image, $file)
 {
-    if(isset($file))
-    {
-        if(isset($image))
-        {
+    if (isset($file)) {
+        if (isset($image)) {
             unlink($image);
-        }else{
+        } else {
             return false;
         }
-    }else{
+    } else {
         return true;
     }
-   
 }
 /**
  * Generate a perfect invoice number.
@@ -66,7 +63,7 @@ function generateInvoiceNumber()
     $date = Carbon::now()->format('Ymd');
 
     // Generate a unique random number to ensure uniqueness
-    $random = rand(1,5);
+    $random = rand(1, 5);
 
     // Combine prefix, date, and random number to create the invoice number
     $invoiceNumber = $prefix . '-' . $date . '-' . $random;

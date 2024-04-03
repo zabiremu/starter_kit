@@ -2,7 +2,7 @@
 
 <!-- Dropify styles -->
 @push('css')
-    
+
     <style>
         .dropify-wrapper {
             background-color: #2A3038 !important;
@@ -22,7 +22,7 @@ Company Information
                 <div class="card-body">
                     <!-- Form for company information -->
                     <h4 class="card-title">Company Information</h4>
-                    <form class="forms-sample" action="{{ route('companyinformation.update') }}" method="POST"
+                    <form class="forms-sample" action="{{ route('company-information.update') }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
 
