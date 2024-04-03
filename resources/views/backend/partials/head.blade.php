@@ -1,14 +1,15 @@
 @php
     $company= App\Models\CompanyInformation::first();
+    $generalSettings= App\Models\GeneralInformation::first();
 @endphp
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="Content-Security-Policy" content="directive">
-    <meta name='description' content='150 words'>
-    <meta name='keywords' content='your, tags'>
-    <meta name="author" content="John Doe">
+    <meta name='description' content='{{$generalSettings->meta_description}}'>
+    <meta name='keywords' content='{{$generalSettings->meta_keywords}}'>
+    <meta name="author" content="{{$generalSettings->author_name}}">
     <title>
         @yield('tittle')
     </title>

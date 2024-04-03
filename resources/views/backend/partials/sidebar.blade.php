@@ -53,6 +53,7 @@
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ route('admin.profile.index') }}">Profile</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('admin.password.index') }}">Password</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.general-information.index') }}">General Information</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('company-information.index') }}">Company
                             Information</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('mail-settings.index') }}">Mail

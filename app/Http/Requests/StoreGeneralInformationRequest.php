@@ -22,7 +22,11 @@ class StoreGeneralInformationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'app_title' => 'required|string',
+            'author_name' => 'nullable|string',
+            'meta_keywords' => 'nullable|string',
+            'meta_description' => 'nullable|string',
+            'copyright' => 'nullable|string',
         ];
     }
 }

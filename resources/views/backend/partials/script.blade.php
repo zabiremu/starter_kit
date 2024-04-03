@@ -25,6 +25,8 @@
 <script src="{{ asset('backend/assets/js/ckeditor.js') }}"></script>
 {{-- sweetalert --}}
 <script src="{{ asset('backend/assets/js/sweetalert2@11.js') }}"></script>
+{{-- selectize.js cdn --}}
+<script src="{{ asset('backend/assets/js/selectize.js') }}"></script>
 {{-- alert messagee --}}
 @include('backend.partials.alert')
 {{-- we define stack for pusing our extarnel scripts --}}
