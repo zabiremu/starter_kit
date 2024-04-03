@@ -11,9 +11,7 @@
         }
     </style>
 @endpush
-@section('tittle')
-Company Information
-@endsection
+@section('tittle','Company Information')
 @section('content')
     <!-- Content section -->
     <div class="h-100 col-md-12 d-flex justify-content-center align-items-center grid-margin stretch-card">
@@ -103,7 +101,7 @@ Company Information
                             <label for="favicon" class="col-sm-3 col-form-label">Favicon</label>
                             <div class="col-sm-9">
                                 <input type="file" class="dropify @error('favicon') is-invalid @enderror" name="favicon"
-                                    id="favicon" data-allowed-file-extensions="png jpg jpeg"
+                                    id="favicon" data-allowed-file-extensions="png jpg jpeg webp"
                                     data-default-file="{{ isset($companyInformation->favicon) ? $companyInformation->favicon : '' }}" />
                                 @error('favicon')
                                     <span class="invalid-feedback" role="alert">
@@ -117,7 +115,7 @@ Company Information
                             <label for="mailfrom" class="col-sm-3 col-form-label">Logo</label>
                             <div class="col-sm-9">
                                 <input type="file" class="dropify" name="logo" id="logo"
-                                    data-allowed-file-extensions="png jpg jpeg"
+                                    data-allowed-file-extensions="png jpg jpeg webp"
                                     data-default-file="{{ isset($companyInformation->logo) ? $companyInformation->logo : '' }}" />
                             </div>
                         </div>

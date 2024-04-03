@@ -11,9 +11,8 @@
         }
     </style>
 @endpush
-@section('tittle')
-User Information
-@endsection
+@section('tittle','User Information')
+
 @section('content')
     <!-- Content section -->
     <div class="h-100 col-md-12 d-flex justify-content-center align-items-center grid-margin stretch-card">

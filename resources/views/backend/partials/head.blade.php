@@ -1,3 +1,6 @@
+@php
+    $company= App\Models\CompanyInformation::first();
+@endphp
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -20,10 +23,10 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.png') }}" />
+    <link rel="shortcut icon" href="{{ asset($company->favicon) }}" />
     <!-- dropify styles -->
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/dropify.min.css') }}"> 
-     <!-- CKEditor styles -->   
+    <link rel="stylesheet" href="{{ asset('backend/assets/css/dropify.min.css') }}">
+     <!-- CKEditor styles -->
     <link rel="stylesheet" href="{{ asset('backend/assets/vendors/CKEditor/custom_ck.css') }}">
     @stack('css')
 </head>

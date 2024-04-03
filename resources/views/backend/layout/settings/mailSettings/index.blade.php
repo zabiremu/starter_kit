@@ -1,7 +1,5 @@
 @extends('backend.app') <!-- Extends the backend layout -->
-@section('tittle')
-Mail Setting
-@endsection
+@section('tittle','Mail Settings')
 @section('content')
     <!-- Content section -->
     <div class="h-100 d-flex justify-content-center align-items-center">
