@@ -33,7 +33,7 @@
         <li class="nav-item menu-items">
             <a class="nav-link" href="{{route('dashboard')}}">
                 <span class="menu-icon">
-                    <i class="mdi mdi-speedometer"></i>
+                    <i class="text-success mdi mdi-view-dashboard"></i>
                 </span>
                 <span class="menu-title">Dashboard</span>
             </a>
@@ -43,7 +43,7 @@
         <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#settings" aria-expanded="false" aria-controls="settings">
                 <span class="menu-icon">
-                    <i class="fas fa-cog"></i>
+                    <i class="mdi mdi-settings text-success"></i>
                 </span>
                 <span class="menu-title">Settings</span>
                 <i class="menu-arrow"></i>
