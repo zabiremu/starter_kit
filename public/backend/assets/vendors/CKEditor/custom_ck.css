@@ -1,0 +1,37 @@
+.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-blurred{
+    background-color: #2A3038 !important;
+    color: #fff !important;
+    border-color: #2A3038;
+}
+
+.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-focused{
+    background-color: #2A3038 !important;
+    color: #fff !important;
+    border-color: rgb(71 164 71 / 50%) !important;
+}
+
+.ck.ck-toolbar.ck-toolbar_grouping{
+    background-color: #2A3038 !important;
+    border:1px solid #3e4248 !important;
+}
+
+.ck.ck-toolbar.ck-toolbar_grouping .ck-button{
+    color: #fff;
+}
+
+.ck.ck-toolbar.ck-toolbar_grouping .ck-button:hover{
+    background: transparent !important;
+}
+
+.ck.ck-toolbar__separator{
+    background: #3e4248 !important;
+}
+
+.ck.ck-list__item span{
+    color: #2A3038 !important;
+}
+
+.ck.ck-button.ck-off.ck-dropdown__button{
+    color: #fff !important;
+    background-color: #2A3038 !important;
+}
