@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Web\Backend\Dashboard\DashboardController;
 use App\Http\Controllers\Web\Backend\Settings\MailController;
 use App\Http\Controllers\Web\Backend\Settings\CompanyController;
-use App\Http\Controllers\Web\Backend\Settings\PasswordController;
 use App\Http\Controllers\Web\Backend\Settings\ProfileController;
+use App\Http\Controllers\Web\Backend\Settings\PasswordController;
+use App\Http\Controllers\Web\Backend\Dashboard\DashboardController;
+use App\Http\Controllers\Web\Backend\Settings\GeneralInformationController;
 
 Route::middleware('auth')->group(function () {
     // Dashboard Route
@@ -33,6 +34,12 @@ Route::middleware('auth')->group(function () {
 
     //User Password Update Route
     Route::controller(PasswordController::class)->prefix('admin-password')->name('admin.password.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/update', 'update')->name('update');
+    });
+
+    //General Information Route
+    Route::controller(GeneralInformationController::class)->prefix('general-information')->name('admin.general-information.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/update', 'update')->name('update');
     });

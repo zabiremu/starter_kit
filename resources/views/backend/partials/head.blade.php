@@ -5,6 +5,10 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Content-Security-Policy" content="directive">
+    <meta name='description' content='150 words'>
+    <meta name='keywords' content='your, tags'>
+    <meta name="author" content="John Doe">
     <title>
         @yield('tittle')
     </title>

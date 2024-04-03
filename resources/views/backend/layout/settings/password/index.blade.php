@@ -28,7 +28,7 @@
                                 @enderror
                             </div>
                         </div>
-
+                         <!-- Input field for user new password -->
                         <div class="form-group row">
                             <label for="new_password" class="col-sm-3 col-form-label">New Password</label>
                             <div class="col-sm-9">
@@ -41,7 +41,7 @@
                                 @enderror
                             </div>
                         </div>
-
+                        <!-- Input field for user confirm password -->
                         <div class="form-group row">
                             <label for="confirm_password" class="col-sm-3 col-form-label">Confirm Password</label>
                             <div class="col-sm-9">
