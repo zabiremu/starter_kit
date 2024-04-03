@@ -5,7 +5,7 @@ Mail Setting
 @section('content')
     <!-- Content section -->
     <div class="h-100 d-flex justify-content-center align-items-center">
-        <div class="col-md-12 d-flex justify-content-center  grid-margin stretch-card">
+        <div class="col-md-12 d-flex justify-content-center grid-margin stretch-card">
             <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">

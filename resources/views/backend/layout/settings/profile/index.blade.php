@@ -16,7 +16,7 @@ User Information
 @endsection
 @section('content')
     <!-- Content section -->
-    <div class="h-100 col-md-12 d-flex justify-content-center grid-margin stretch-card">
+    <div class="h-100 col-md-12 d-flex justify-content-center align-items-center grid-margin stretch-card">
         <div class="col-md-7 d-flex justify-content-center grid-margin stretch-card">
             <div class="card" style="height: 68%">
                 <div class="card-body">
