@@ -1,14 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Web\Backend\Role\RoleController;
+use App\Http\Controllers\Web\Backend\User\UserController;
 use App\Http\Controllers\Web\Backend\Settings\MailController;
 use App\Http\Controllers\Web\Backend\Settings\CompanyController;
 use App\Http\Controllers\Web\Backend\Settings\ProfileController;
 use App\Http\Controllers\Web\Backend\Settings\PasswordController;
 use App\Http\Controllers\Web\Backend\Dashboard\DashboardController;
-use App\Http\Controllers\Web\Backend\Role\RoleController;
+use App\Http\Controllers\Web\Backend\Permissions\PermissionsController;
 use App\Http\Controllers\Web\Backend\Settings\GeneralInformationController;
-use App\Http\Controllers\Web\Backend\User\UserController;
 
 Route::middleware('auth')->group(function () {
     // Dashboard Route
@@ -65,4 +66,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/status/{id}', 'status')->name('status');
         Route::get('/destroy/{id}', 'destroy')->name('destroy');
     });
+
+    Route::get('/permissions', [PermissionsController::class, 'index'])->name('admin.permissions');
+    Route::post('get-permissions', [PermissionsController::class, 'get_permissions'])->name('get.permissions');
+    Route::post('/store-permissions', [PermissionsController::class, 'store'])->name('store.permissions');
 });

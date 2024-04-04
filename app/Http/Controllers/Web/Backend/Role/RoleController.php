@@ -28,7 +28,7 @@ class RoleController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('backend.layout.role.index');
+        return view('backend.layout.role&permissions.index');
     }
     public function store(StoreRoleController $request)
     {

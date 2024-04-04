@@ -97,14 +97,14 @@
                 <span class="menu-icon">
                     <i class="mdi mdi-account-group text-success"></i>
                 </span>
-                <span class="menu-title">Roles</span>
+                <span class="menu-title">Roles & Permission</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="roles">
 
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ route('roles.index') }}">Roles</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.password.index') }}">Permissions</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.permissions') }}">Permissions</a></li>
                 </ul>
             </div>
         </li>

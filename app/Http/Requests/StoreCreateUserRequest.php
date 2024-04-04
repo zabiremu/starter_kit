@@ -27,6 +27,7 @@ class StoreCreateUserRequest extends FormRequest
             'phone' => ['required', 'string'],
             'image' => ['nullable', 'image'],
             'password' => ['required', 'string'],
+            'role' => ['required', 'string'],
         ];
     }
 }
