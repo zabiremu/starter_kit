@@ -18,7 +18,7 @@ class UserController extends Controller
             return DataTables::of($data)->addIndexColumn()
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $btn = '<div class="d-flex"> <a href="/" class="btn btn-inverse-danger btn-fw w-25"><i class="mdi mdi-delete-outline"></i></a>';
+                    $btn = '<div class="d-flex"> <a href="' . route('users.destroy', $row->id) . '" class="btn btn-inverse-danger btn-fw w-25 delete-btn"><i class="mdi mdi-delete-outline"></i></a>';
                     return $btn;
                 })
                 // ->addColumn('role', function ($data) {
@@ -29,7 +29,7 @@ class UserController extends Controller
                     return $btn = '<img src="' . $img . '" alt="' . $data->name . '" class="my-1"/>';
                 })
                 ->addColumn('status', function ($data) {
-                    $status = $data->status == 1 ? '<div class="badge badge-outline-success">Approved</div>' : '<div class="badge badge-outline-danger">Pending</div>';
+                    $status = $data->status == 1 ? '<a  href="' . route('users.status', $data->id) . '" class="badge badge-outline-success status-btn" style="cursor:pointer;">Approved</a>' : '<a   href="' . route('users.status', $data->id) . '" class="badge badge-outline-danger status-btn" style="cursor:pointer;">Pending</a>';
                     return $status;
                 })
                 ->rawColumns(['action', 'image', 'status'])
@@ -67,6 +67,27 @@ class UserController extends Controller
         $user->save();
 
         // Redirect to the index page
-        return redirect()->route('users.create');
+        return redirect()->route('users.index')->with("success", "Created Successfully");
+    }
+
+    public function status($id)
+    {
+        // find the user by ID
+        $user = User::find($id);
+        $user->status = $user->status == '0' ? '1' : '0';
+        // Save the changes or new record
+        $user->save();
+        // Redirect to the index page
+        return redirect()->route('users.index')->with("success", "Updated Successfully");
+    }
+
+    public function destroy($id)
+    {
+        // Find the user by ID
+        $user = User::find($id);
+        // Delete the user
+        $user->delete();
+        // Redirect to the index page
+        return redirect()->route('users.index')->with("success", "Deleted Successfully");
     }
 }

@@ -46,6 +46,32 @@
             font-size: 0.875rem;
             padding-top: 12px;
         }
+        .swal2-modal .swal2-title {
+            font-size: 25px;
+            line-height: 1;
+            font-weight: 500;
+            color: inherit;
+            font-weight: initial;
+            margin-bottom: 0;
+        }
+        .swal2-modal .swal2-icon, .swal2-modal .swal2-success-ring {
+            margin-top: 42px;
+            margin-bottom: 10px;
+        }
+        div:where(.swal2-container).swal2-center>.swal2-popup {
+            grid-column: 2;
+            grid-row: 2;
+            place-self: center center;
+            padding-bottom: 30px;
+        }
+        .badge-outline-success:hover{
+            color: #fff;
+            background-color: #00d25b;
+        }
+        .badge-outline-danger:hover{
+            color: #fff;
+            background-color: #fc424a;
+        }
     </style>
     @stack('css')
 </head>

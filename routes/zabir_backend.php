@@ -50,5 +50,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::post('/store', 'store')->name('store');
+        Route::get('/status/{id}', 'status')->name('status');
+        Route::get('/destroy/{id}', 'destroy')->name('destroy');
     });
 });

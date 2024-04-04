@@ -59,7 +59,7 @@
             <div class="collapse" id="users">
 
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('users.create') }}">Create User</a></li>
+                    {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('users.create') }}">Create User</a></li> --}}
                     <li class="nav-item"> <a class="nav-link" href="{{ route('users.index') }}">User List</a></li>
                 </ul>
             </div>
