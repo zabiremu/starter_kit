@@ -79,8 +79,8 @@
             <div class="collapse" id="settings">
 
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.profile.index') }}">Profile</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.password.index') }}">Password</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.profile.index') }}">Profile Settings</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.password.index') }}">Password Password</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('admin.general-information.index') }}">General Information</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('company-information.index') }}">Company
                             Information</a></li>
@@ -93,14 +93,14 @@
 
         {{-- roles menu start --}}
         <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#settings" aria-expanded="false" aria-controls="settings">
+            <a class="nav-link" data-toggle="collapse" href="#roles" aria-expanded="false" aria-controls="settings">
                 <span class="menu-icon">
-                    <i class="mdi mdi-settings text-success"></i>
+                    <i class="mdi mdi-account-group text-success"></i>
                 </span>
                 <span class="menu-title">Roles</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="settings">
+            <div class="collapse" id="roles">
 
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ route('roles.index') }}">Roles</a></li>

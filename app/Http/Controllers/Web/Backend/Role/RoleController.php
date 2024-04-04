@@ -18,27 +18,18 @@ class RoleController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
                     if ($row->name !== "super-admin" && $row->name !== "user") {
-                        $btn = '<div class="d-flex"> <a href="' . route('users.destroy', $row->id) . '" class="btn btn-inverse-danger btn-fw w-25 delete-btn"><i class="mdi mdi-delete-outline"></i></a>';
+                        $btn = '<div class="d-flex"> <button  onclick="edit(\'' . $row->id . '\', \'' . $row->name . '\')"  data-toggle="modal" data-target="#edit-roles" class="btn btn-inverse-info btn-fw me-3"><i class="mdi mdi-pencil"></i></button> <a href="' . route('roles.destroy', $row->id) . '" class="btn btn-inverse-danger btn-fw w-25 delete-btn"><i class="mdi mdi-delete-outline"></i></a></div>';
+
                         return $btn;
                     } else {
                         return $btn = '';
                     }
-                })
-                ->addColumn('image', function ($data) {
-                    $img = isset($data->image)  ? asset($data->image) : 'https://api.dicebear.com/8.x/adventurer/svg?seed=' . $data->name . '';
-                    return $btn = '<img src="' . $img . '" alt="' . $data->name . '" class="my-1"/>';
                 })
                 ->rawColumns(['action'])
                 ->make(true);
         }
         return view('backend.layout.role.index');
     }
-    public function create()
-    {
-        // Render the user create page view located at 'backend.layout.user.create'.
-        return view('backend.layout.user.create');
-    }
-
     public function store(StoreRoleController $request)
     {
         // create new roles
@@ -54,22 +45,22 @@ class RoleController extends Controller
     public function update(StoreRoleController $request)
     {
         // Find the role you want to edit
-        $role = Role::findByName($request->old_role_name);
+        $role = Role::find($request->id);
         // Update the role properties
         $role->name = $request->name;
         // Save the changes
         $role->save();
         // Redirect to the index page
-        return redirect()->route('roles.index')->with("success", "Created Successfully");
+        return redirect()->route('roles.index')->with("success", "Updated Successfully");
     }
 
     public function destroy($id)
     {
-        // Find the user by ID
-        $user = User::find($id);
-        // Delete the user
+        // Find the Role by ID
+        $user = Role::find($id);
+        // Delete the Role
         $user->delete();
         // Redirect to the index page
-        return redirect()->route('users.index')->with("success", "Deleted Successfully");
+        return redirect()->route('roles.index')->with("success", "Deleted Successfully");
     }
 }

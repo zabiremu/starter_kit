@@ -4,8 +4,9 @@
 @section('tittle','Users lists')
 @section('content')
     <!-- Content section -->
+    <div class="d-flex justify-content-center align-items-center h-100">
     <div class="col-lg-12 grid-margin stretch-card">
-        <div class="card">
+        <div class="card ">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
                 <h4 class="card-title ">User List</h4>
@@ -19,6 +20,7 @@
                     <th> Image</th>
                     <th> User Name </th>
                     <th> Email</th>
+                    <th> Role</th>
                     <th> Phone</th>
                     <th> Status</th>
                     <th> Action</th>
@@ -32,6 +34,7 @@
           </div>
         </div>
       </div>
+    </div>
 @endsection
 
 @push('scripts')
@@ -66,6 +69,12 @@
                     {
                         data: 'email',
                         name: 'email',
+                        orderable: true,
+                        searchable: true
+                    },
+                    {
+                        data: 'role',
+                        name: 'Role',
                         orderable: true,
                         searchable: true
                     },

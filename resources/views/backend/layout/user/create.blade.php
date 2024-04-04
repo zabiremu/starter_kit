@@ -40,8 +40,25 @@
                                 @enderror
                             </div>
                         </div>
-                        <!-- Input field for email -->
+                        <!-- Input field for roles -->
                         <div class="form-group row">
+                            <label for="role" class="col-sm-3 col-form-label">Roles</label>
+                            <div class="col-sm-9">
+                                <select name="role" id="role" class="form-control">
+                                    <option value="" disabled>Select Role</option>
+                                    @foreach ($roles as $role)
+                                        <option value="{{$role->name}}">{{$role->name}}</option>
+                                    @endforeach
+                                </select>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                         <!-- Input field for email -->
+                         <div class="form-group row">
                             <label for="email" class="col-sm-3 col-form-label">Email</label>
                             <div class="col-sm-9">
                                 <input type="email" class="form-control @error('email') is-invalid @enderror"

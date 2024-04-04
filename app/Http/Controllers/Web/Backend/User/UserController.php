@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Backend\User;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\Facades\DataTables;
@@ -19,15 +20,20 @@ class UserController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
                     if ($row->email !== "admin@gmail.com") {
-                        $btn = '<div class="d-flex"> <a href="' . route('users.destroy', $row->id) . '" class="btn btn-inverse-danger btn-fw w-25 delete-btn"><i class="mdi mdi-delete-outline"></i></a>';
+                        $btn = '<div class="d-flex"> <a href="' . route('users.destroy', $row->id) . '" class="btn btn-inverse-danger btn-fw w-25 delete-btn"><i class="mdi mdi-delete-outline"></i></a></div>';
                         return $btn;
                     } else {
                         return $btn = '';
                     }
                 })
-                // ->addColumn('role', function ($data) {
-                //     return $data->role == 1 ? 'admin' : ($data->role == 2 ? 'stuff' : 'user');;
-                // })
+                ->addColumn('role', function ($data) {
+                    $roles = $data->getRoleNames();
+                    if (!empty($roles)) {
+                        return $roles[0]; // Return the first role name
+                    } else {
+                        return 'No Role Assigned'; // Or any default value if user has no roles
+                    }
+                })
                 ->addColumn('image', function ($data) {
                     $img = isset($data->image)  ? asset($data->image) : 'https://api.dicebear.com/8.x/adventurer/svg?seed=' . $data->name . '';
                     return $btn = '<img src="' . $img . '" alt="' . $data->name . '" class="my-1"/>';
@@ -40,15 +46,18 @@ class UserController extends Controller
                         return $status = '';
                     }
                 })
-                ->rawColumns(['action', 'image', 'status'])
+                ->rawColumns(['action', 'image', 'status', 'role'])
                 ->make(true);
         }
+
         return view('backend.layout.user.index');
     }
     public function create()
     {
+        //get all roles
+        $roles = Role::all();
         // Render the user create page view located at 'backend.layout.user.create'.
-        return view('backend.layout.user.create');
+        return view('backend.layout.user.create', compact('roles'));
     }
 
     public function store(StoreCreateUserRequest $request)
@@ -73,6 +82,7 @@ class UserController extends Controller
         $user->image = $image;
         // Save the changes or new record
         $user->save();
+        $user->assignRole($request->role);
 
         // Redirect to the index page
         return redirect()->route('users.index')->with("success", "Created Successfully");
