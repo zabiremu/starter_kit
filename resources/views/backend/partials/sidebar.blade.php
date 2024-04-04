@@ -1,15 +1,23 @@
 @php
     $company= App\Models\CompanyInformation::first();
 @endphp
+<style>
+     ul#side_navbar li{
+        margin: 4px 0;
+    }
+    ul#side_navbar:hover li{
+        margin: 4px 0;
+    }
+</style>
 {{-- sidebar section start  --}}
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
+<nav class="sidebar sidebar-offcanvas" id="sidebar" >
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
         <a class="sidebar-brand brand-logo" href="{{ route('dashboard') }}">
             <img src="{{ asset($company->logo) }}" alt="logo" /></a>
         <a class="sidebar-brand brand-logo-mini" href="{{ route('dashboard') }}">
             <img src="{{ asset($company->logo) }}" alt="logo" /></a>
     </div>
-    <ul class="nav">
+    <ul class="nav" id="side_navbar" style="position: fixed; width:14%;">
         <li class="nav-item profile">
             <div class="profile-desc">
                 <div class="profile-pic">

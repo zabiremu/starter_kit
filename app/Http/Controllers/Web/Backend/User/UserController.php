@@ -29,7 +29,7 @@ class UserController extends Controller
                     return $btn = '<img src="' . $img . '" alt="' . $data->name . '" class="my-1"/>';
                 })
                 ->addColumn('status', function ($data) {
-                    $status = $data->status == 1 ? '<label class="badge badge-success">Active</label>' : '<label class="badge badge-danger">In-active</label>';
+                    $status = $data->status == 1 ? '<div class="badge badge-outline-success">Approved</div>' : '<div class="badge badge-outline-danger">Pending</div>';
                     return $status;
                 })
                 ->rawColumns(['action', 'image', 'status'])

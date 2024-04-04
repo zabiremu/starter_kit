@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\GeneralInformation;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreGeneralInformationRequest;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class GeneralInformationController extends Controller
 {
@@ -13,7 +15,7 @@ class GeneralInformationController extends Controller
     {
         // Retrieve the first general information record
         $generalInformation = GeneralInformation::first();
-        // Render the general-information settings index page view located at 'backend.layout.settings.generalInformation.index'.
+        // Render the general-information settings index page view located at 'backend.layout.settings.generalInformation.index'.;
         return view('backend.layout.settings.generalInformation.index', compact('generalInformation'));
     }
 
@@ -28,6 +30,11 @@ class GeneralInformationController extends Controller
             // Create new general information
             $generalInformation = new GeneralInformation();
         }
+        // Update the .env file
+        $envFile = base_path('.env');
+        $envContent = File::get($envFile);
+        $envContent = Str::replaceMatches('/(APP_NAME=).*/', '$1"' . $request->app_title . '"', $envContent);
+        File::put($envFile, $envContent);
         // Assign values from the request to the company information object
         $generalInformation->app_title = $request->app_title;
         $generalInformation->author_name = $request->author_name;

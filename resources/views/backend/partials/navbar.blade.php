@@ -167,3 +167,18 @@
     </div>
 </nav>
 <!-- header navbar end  -->
+
+
+@push('scripts')
+<script>
+    var clickCount = 0;
+    $('.navbar-toggler').on("click",function(){
+        clickCount++;
+    if (clickCount % 2 === 1) {
+        $('#side_navbar').css("width", "3.5%");
+    } else {
+        $('#side_navbar').css("width", "14%");
+    }
+    })
+</script>
+@endpush

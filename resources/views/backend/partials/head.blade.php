@@ -33,5 +33,19 @@
     <link rel="stylesheet" href="{{ asset('backend/assets/css/dropify.min.css') }}">
      <!-- CKEditor styles -->
     <link rel="stylesheet" href="{{ asset('backend/assets/vendors/CKEditor/custom_ck.css') }}">
+    <style>
+        div#yajra-datatables_filter {
+            float: inline-end;
+        }
+        .dataTables_wrapper .dataTables_paginate {
+            margin-top: 20px;
+            padding-right: 10px;
+            float: inline-end;
+        }
+        .dataTables_wrapper .dataTables_info {
+            font-size: 0.875rem;
+            padding-top: 12px;
+        }
+    </style>
     @stack('css')
 </head>
