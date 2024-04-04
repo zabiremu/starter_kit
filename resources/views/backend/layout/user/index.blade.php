@@ -45,7 +45,7 @@
             var table = $('#yajra-datatables').DataTable({
                 processing: true,
                 responsive: true,
-                serverSide: true,
+                serverSide: false,
                 ajax: "{{ route('users.index') }}",
                 columns: [{
                         data: 'id',
