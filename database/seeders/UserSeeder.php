@@ -18,11 +18,13 @@ class UserSeeder extends Seeder
         $admin->email = 'admin@gmail.com';
         $admin->password = bcrypt('12345678'); // You may want to use a more secure method to generate passwords // Assuming you have a boolean field to identify admins
         $admin->save();
+        $admin->assignRole('super-admin');
 
         $user = new User();
         $user->name = 'user';
         $user->email = 'user@gmail.com';
         $user->password = bcrypt('12345678'); // You may want to use a more secure method to generate passwords// Assuming you have a boolean field to identify admins
         $user->save();
+        $admin->assignRole('user');
     }
 }

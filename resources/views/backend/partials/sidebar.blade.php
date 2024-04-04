@@ -13,9 +13,9 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar" >
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
         <a class="sidebar-brand brand-logo" href="{{ route('dashboard') }}">
-            <img src="{{ asset($company->logo) }}" alt="logo" /></a>
+            <img src="{{ isset($company->logo) ? asset($company->logo) : '' }}" alt="logo" /></a>
         <a class="sidebar-brand brand-logo-mini" href="{{ route('dashboard') }}">
-            <img src="{{ asset($company->logo) }}" alt="logo" /></a>
+            <img src="{{ isset($company->logo) ? asset($company->logo) : '' }}" alt="logo" /></a>
     </div>
     <ul class="nav" id="side_navbar" style="position: fixed; width:14%;">
         <li class="nav-item profile">
@@ -86,6 +86,25 @@
                             Information</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('mail-settings.index') }}">Mail
                             Settings</a></li>
+                </ul>
+            </div>
+        </li>
+        {{-- setting menu End --}}
+
+        {{-- roles menu start --}}
+        <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#settings" aria-expanded="false" aria-controls="settings">
+                <span class="menu-icon">
+                    <i class="mdi mdi-settings text-success"></i>
+                </span>
+                <span class="menu-title">Roles</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="settings">
+
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('roles.index') }}">Roles</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.password.index') }}">Permissions</a></li>
                 </ul>
             </div>
         </li>

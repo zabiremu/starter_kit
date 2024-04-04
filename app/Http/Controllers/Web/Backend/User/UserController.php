@@ -18,8 +18,12 @@ class UserController extends Controller
             return DataTables::of($data)->addIndexColumn()
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $btn = '<div class="d-flex"> <a href="' . route('users.destroy', $row->id) . '" class="btn btn-inverse-danger btn-fw w-25 delete-btn"><i class="mdi mdi-delete-outline"></i></a>';
-                    return $btn;
+                    if ($row->email !== "admin@gmail.com") {
+                        $btn = '<div class="d-flex"> <a href="' . route('users.destroy', $row->id) . '" class="btn btn-inverse-danger btn-fw w-25 delete-btn"><i class="mdi mdi-delete-outline"></i></a>';
+                        return $btn;
+                    } else {
+                        return $btn = '';
+                    }
                 })
                 // ->addColumn('role', function ($data) {
                 //     return $data->role == 1 ? 'admin' : ($data->role == 2 ? 'stuff' : 'user');;
@@ -29,8 +33,12 @@ class UserController extends Controller
                     return $btn = '<img src="' . $img . '" alt="' . $data->name . '" class="my-1"/>';
                 })
                 ->addColumn('status', function ($data) {
-                    $status = $data->status == 1 ? '<a  href="' . route('users.status', $data->id) . '" class="badge badge-outline-success status-btn" style="cursor:pointer;">Approved</a>' : '<a   href="' . route('users.status', $data->id) . '" class="badge badge-outline-danger status-btn" style="cursor:pointer;">Pending</a>';
-                    return $status;
+                    if ($data->email !== "admin@gmail.com") {
+                        $status = $data->status == 1 ? '<a  href="' . route('users.status', $data->id) . '" class="badge badge-outline-success status-btn" style="cursor:pointer;">Approved</a>' : '<a   href="' . route('users.status', $data->id) . '" class="badge badge-outline-danger status-btn" style="cursor:pointer;">Pending</a>';
+                        return $status;
+                    } else {
+                        return $status = '';
+                    }
                 })
                 ->rawColumns(['action', 'image', 'status'])
                 ->make(true);

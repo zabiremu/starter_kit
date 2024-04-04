@@ -7,9 +7,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="Content-Security-Policy" content="directive">
-    <meta name='description' content='{{$generalSettings->meta_description}}'>
-    <meta name='keywords' content='{{$generalSettings->meta_keywords}}'>
-    <meta name="author" content="{{$generalSettings->author_name}}">
+    <meta name='description' content='{{isset($generalSettings->meta_description) ? $generalSettings->meta_description : ''}}'>
+    <meta name='keywords' content='{{isset($generalSettings->meta_keywords) ? $generalSettings->meta_keywords : ''}}'>
+    <meta name="author" content="{{isset($generalSettings->author_name) ? $generalSettings->author_name : ''}}">
     <title>
         @yield('tittle')
     </title>
@@ -28,7 +28,7 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="{{ asset($company->favicon) }}" />
+    <link rel="shortcut icon" href="{{ isset($company->favicon) ? asset($company->favicon) : ''}}" />
     <!-- dropify styles -->
     <link rel="stylesheet" href="{{ asset('backend/assets/css/dropify.min.css') }}">
      <!-- CKEditor styles -->

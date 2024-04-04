@@ -6,6 +6,7 @@ use App\Http\Controllers\Web\Backend\Settings\CompanyController;
 use App\Http\Controllers\Web\Backend\Settings\ProfileController;
 use App\Http\Controllers\Web\Backend\Settings\PasswordController;
 use App\Http\Controllers\Web\Backend\Dashboard\DashboardController;
+use App\Http\Controllers\Web\Backend\Role\RoleController;
 use App\Http\Controllers\Web\Backend\Settings\GeneralInformationController;
 use App\Http\Controllers\Web\Backend\User\UserController;
 
@@ -50,6 +51,17 @@ Route::middleware('auth')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::post('/store', 'store')->name('store');
+        Route::get('/status/{id}', 'status')->name('status');
+        Route::get('/destroy/{id}', 'destroy')->name('destroy');
+    });
+
+    //Users Route
+    Route::controller(RoleController::class)->prefix('roles')->name('roles.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::put('/update/{id}', 'update')->name('update');
         Route::get('/status/{id}', 'status')->name('status');
         Route::get('/destroy/{id}', 'destroy')->name('destroy');
     });
