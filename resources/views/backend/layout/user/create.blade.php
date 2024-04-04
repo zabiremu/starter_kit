@@ -77,7 +77,7 @@
                         <!-- Buttons for update and cancel -->
                         <div class="d-flex justify-content-end">
                             <button class="btn btn-inverse-success btn-fw mr-2 ">Submit</button>
-                            <a href="{{ route('dashboard') }}" class="btn btn-inverse-danger ">Cancel</a>
+                            <a href="{{ route('users.index') }}" class="btn btn-inverse-danger ">Cancel</a>
                         </div>
                     </form>
                 </div>
