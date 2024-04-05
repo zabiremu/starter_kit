@@ -7,8 +7,11 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\StoreCreateUserRequest;
+use App\Mail\SendUserEmail;
+use App\Models\GeneralInformation;
 
 class UserController extends Controller
 {
@@ -88,8 +91,15 @@ class UserController extends Controller
         $user->save();
         $user->assignRole($request->role);
 
-        // Redirect to the index page
-        return redirect()->route('users.index')->with("success", "Created Successfully");
+        if ($user) {
+            $genealInfo = GeneralInformation::first();
+            $app_name = $genealInfo->app_title ?? 'Test';
+            Mail::to($request->email)->send(new SendUserEmail($request->email, $request->password, $app_name, $request->name));
+            // Redirect to the index page
+            return redirect()->route('users.index')->with("success", "Created Successfully");
+        } else {
+            return redirect()->route('users.index')->with("error", "Data didn't save");
+        }
     }
     public function status($id)
     {
