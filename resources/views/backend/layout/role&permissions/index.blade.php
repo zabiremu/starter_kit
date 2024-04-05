@@ -11,7 +11,9 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <h4 class="card-title ">Role List</h4>
                     <!-- Button trigger modal -->
-                    <button type="button" data-toggle="modal" data-target="#modal" class="btn btn-outline-primary btn-fw">Add</button>
+                    @can('Role Create')
+                        <button type="button" data-toggle="modal" data-target="#modal" class="btn btn-outline-primary btn-fw">Add</button>
+                    @endcan
                     {{-- modal end --}}
                 </div>
                 <div class="table-responsive">

@@ -21,7 +21,10 @@ class UserController extends Controller
                 ->addColumn('action', function ($row) {
                     if ($row->email !== "admin@gmail.com") {
                         $roles = $row->getRoleNames();
-                        $btn = '<div class="d-flex"> <button  onclick="edit(\'' . $row->id . '\', \'' . $roles[0] . '\')"  data-toggle="modal" data-target="#edit-roles" class="btn btn-inverse-info btn-fw me-3"><i class="mdi mdi-pencil"></i></button> <a href="' . route('users.destroy', $row->id) . '" class="btn btn-inverse-danger btn-fw w-25 delete-btn"><i class="mdi mdi-delete-outline"></i></a></div>';
+                        $btn = '<div class="d-flex">
+                                    <button  onclick="edit(\'' . $row->id . '\', \'' . $roles[0] . '\')"  data-toggle="modal" data-target="#edit-roles" class="btn btn-inverse-info btn-fw me-3"><i class="mdi mdi-pencil"></i></button>
+                                    <a href="' . route('users.destroy', $row->id) . '" class="btn btn-inverse-danger btn-fw w-25 delete-btn"><i class="mdi mdi-delete-outline"></i></a>
+                                </div>';
                         return $btn;
                     } else {
                         return $btn = '';

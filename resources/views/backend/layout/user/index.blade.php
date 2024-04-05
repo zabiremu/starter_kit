@@ -10,7 +10,9 @@
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
                 <h4 class="card-title ">User List</h4>
+                @can('Users Create')
                 <a href="{{route('users.create')}}" class="btn btn-outline-primary btn-fw">Add</a>
+                @endcan
             </div>
             <div class="table-responsive">
               <table class="table table-dark" id="yajra-datatables">
