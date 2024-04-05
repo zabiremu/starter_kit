@@ -38,6 +38,7 @@
         <li class="nav-item nav-category">
             <span class="nav-link">Navigation</span>
         </li>
+        @can('Dashboard Menu')
         <li class="nav-item menu-items">
             <a class="nav-link" href="{{route('dashboard')}}">
                 <span class="menu-icon">
@@ -46,7 +47,8 @@
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
-
+        @endcan
+        @can('Users Menu')
         {{-- users menu start --}}
          <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#users" aria-expanded="false" aria-controls="users">
@@ -65,8 +67,9 @@
             </div>
         </li>
         {{-- users menu End --}}
+        @endcan
 
-
+        @if(auth()->user()->can('Profile Settings') || auth()->user()->can('Password Settings') || auth()->user()->can('General Information') || auth()->user()->can('Company Information') || auth()->user()->can('Mail Settings'))
         {{-- setting menu start --}}
         <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#settings" aria-expanded="false" aria-controls="settings">
@@ -79,18 +82,29 @@
             <div class="collapse" id="settings">
 
                 <ul class="nav flex-column sub-menu">
+                    @can('Profile Settings')
                     <li class="nav-item"> <a class="nav-link" href="{{ route('admin.profile.index') }}">Profile Settings</a></li>
+                    @endcan
+                    @can('Password Settings')
                     <li class="nav-item"> <a class="nav-link" href="{{ route('admin.password.index') }}">Password Password</a></li>
+                    @endcan
+                    @can('General Information')
                     <li class="nav-item"> <a class="nav-link" href="{{ route('admin.general-information.index') }}">General Information</a></li>
+                    @endcan
+                    @can('Company Information')
                     <li class="nav-item"> <a class="nav-link" href="{{ route('company-information.index') }}">Company
                             Information</a></li>
+                    @endcan
+                    @can('Mail Settings')
                     <li class="nav-item"> <a class="nav-link" href="{{ route('mail-settings.index') }}">Mail
                             Settings</a></li>
+                    @endcan
                 </ul>
             </div>
         </li>
         {{-- setting menu End --}}
-
+        @endif
+        @if(auth()->user()->can('Role Menu') || auth()->user()->can('Permissions Menu'))
         {{-- roles menu start --}}
         <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#roles" aria-expanded="false" aria-controls="settings">
@@ -103,11 +117,16 @@
             <div class="collapse" id="roles">
 
                 <ul class="nav flex-column sub-menu">
+                    @can('Role Menu')
                     <li class="nav-item"> <a class="nav-link" href="{{ route('roles.index') }}">Roles</a></li>
+                    @endcan
+                    @can('Permissions Menu')
                     <li class="nav-item"> <a class="nav-link" href="{{ route('admin.permissions') }}">Permissions</a></li>
+                    @endcan
                 </ul>
             </div>
         </li>
+        @endif
         {{-- setting menu End --}}
     </ul>
 </nav>

@@ -1,6 +1,6 @@
 @extends('backend.app')
 
-@section('title','Permissions')
+@section('tittle','Permissions')
 
 @push('css')
     <style>
@@ -13,7 +13,7 @@
     @php
         $role_name;
     @endphp
-    <form action="{{route('store.permissions')}}" method="post">
+    <form action="{{route('store.permissions')}}" method="post" class="d-flex justify-content-center align-items-center h-100">
         @csrf
         <div class="h-100 col-md-12 d-flex justify-content-center align-items-center grid-margin stretch-card">
             <div class="col-md-10 d-flex justify-content-center grid-margin stretch-card">

@@ -22,19 +22,25 @@ class PermissionSeeder extends Seeder
             'Users Registration' => [
                 'Users Menu',
                 'Users Create',
-                'Users Edit',
+                'Users Store',
                 'Users Update',
                 'Users Delete',
                 'Users Status',
             ],
             'Settings' => [
                 'Profile Settings',
+                'Profile Settings Update',
                 'Password Settings',
+                'Password Settings Update',
                 'General Information',
+                'General Information Update',
                 'Company Information',
+                'Company Information Update',
                 'Mail Settings',
+                'Mail Settings Update',
             ],
             'Role' => [
+                'Role Menu',
                 'Role Create',
                 'Role Store',
                 'Role Edit',
@@ -44,6 +50,7 @@ class PermissionSeeder extends Seeder
             ],
             'Permissions' => [
                 'Permissions Menu',
+                'Permissions Store',
             ],
         ];
 

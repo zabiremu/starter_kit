@@ -1,4 +1,8 @@
 @extends('backend.app')
+
+
+@section('tittle','Dashboard')
+
 @section('content')
     <div class="row">
         <div class="col-12 grid-margin stretch-card">

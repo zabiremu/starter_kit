@@ -20,7 +20,8 @@ class UserController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
                     if ($row->email !== "admin@gmail.com") {
-                        $btn = '<div class="d-flex"> <a href="' . route('users.destroy', $row->id) . '" class="btn btn-inverse-danger btn-fw w-25 delete-btn"><i class="mdi mdi-delete-outline"></i></a></div>';
+                        $roles = $row->getRoleNames();
+                        $btn = '<div class="d-flex"> <button  onclick="edit(\'' . $row->id . '\', \'' . $roles[0] . '\')"  data-toggle="modal" data-target="#edit-roles" class="btn btn-inverse-info btn-fw me-3"><i class="mdi mdi-pencil"></i></button> <a href="' . route('users.destroy', $row->id) . '" class="btn btn-inverse-danger btn-fw w-25 delete-btn"><i class="mdi mdi-delete-outline"></i></a></div>';
                         return $btn;
                     } else {
                         return $btn = '';
@@ -40,7 +41,7 @@ class UserController extends Controller
                 })
                 ->addColumn('status', function ($data) {
                     if ($data->email !== "admin@gmail.com") {
-                        $status = $data->status == 1 ? '<a  href="' . route('users.status', $data->id) . '" class="badge badge-outline-success status-btn" style="cursor:pointer;">Approved</a>' : '<a   href="' . route('users.status', $data->id) . '" class="badge badge-outline-danger status-btn" style="cursor:pointer;">Pending</a>';
+                        $status = $data->status == 1 ? '<a  href="' . route('users.status', $data->id) . '" class="badge badge-outline-success status-btn" style="cursor:pointer;">Activate</a>' : '<a   href="' . route('users.status', $data->id) . '" class="badge badge-outline-danger status-btn" style="cursor:pointer;">inactive</a>';
                         return $status;
                     } else {
                         return $status = '';
@@ -49,8 +50,8 @@ class UserController extends Controller
                 ->rawColumns(['action', 'image', 'status', 'role'])
                 ->make(true);
         }
-
-        return view('backend.layout.user.index');
+        $roles = Role::all();
+        return view('backend.layout.user.index', compact('roles'));
     }
     public function create()
     {
@@ -87,7 +88,6 @@ class UserController extends Controller
         // Redirect to the index page
         return redirect()->route('users.index')->with("success", "Created Successfully");
     }
-
     public function status($id)
     {
         // find the user by ID
@@ -98,6 +98,28 @@ class UserController extends Controller
         // Redirect to the index page
         return redirect()->route('users.index')->with("success", "Updated Successfully");
     }
+
+    public function editAssignRole(Request $request)
+    {
+
+
+        // find the user by ID
+        $user = User::find($request->id);
+        if ($user->status === "1") {
+            $role = Role::where('name', $request->role)->first();
+            if ($user && $role) {
+                $user->syncRoles([$role->id]); // Assign the role to the user
+                // Alternatively, you can use $user->assignRole($role) method to assign the role
+            }
+            // Edit Assign Role
+            $user->assignRole($request->name);
+            // Redirect to the index page
+            return redirect()->route('users.index')->with("success", "Updated Successfully");
+        } else {
+            return redirect()->route('users.index')->with("error", "You cannot update the status of an inactive user. Please activate the user first.");
+        }
+    }
+
 
     public function destroy($id)
     {
